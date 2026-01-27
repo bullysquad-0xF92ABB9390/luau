@@ -1,12 +1,3 @@
-------------------------------------
--- | ANAL DESTROYER : TUFF CHANGER |
-------------------------------------
--- have any questions? feel free to ask them!
--- =============================================================
--- AUTHOR:      sanyoq
--- DISCORD:     @asdqwes32
--- VERSION:     fucking beta (no more support cuz im lazy asf)
-----------------------------------------------------------------
 local name = game:GetService("Players").LocalPlayer.Name
 local parent = workspace:FindFirstChild(name)
 
@@ -47,10 +38,10 @@ end
 ---------------------------------------
 -- configuring pants here
 newPants.Name = "Pants"
-newPants.PantsTemplate = _G.link["pants"]
+newPants.PantsTemplate = not _G.do_Not_Load_Assets and _G.link["pants"] or ""
 -- configuring shirt here
 newShirt.Name = "Shirt"
-newShirt.ShirtTemplate = _G.link["shirt"]
+newShirt.ShirtTemplate = not _G.do_Not_Load_Assets and _G.link["shirt"] or ""
 -- configuring accessory here (BETA)
 if _G.betaVer then
     newAccessory.Name = "Accessory (Handle1Accessory)"
@@ -67,3 +58,29 @@ if _G.betaVer then
     origSize.Value = workspace:FindFirstChild(name):FindFirstChild("Head"):FindFirstChild("OriginalSize").Value
     newAccessoryWeld.Name = "AccessoryWeld"
 end
+
+-- doing other things asked from cfg
+if _G.removeAccessory then
+    local a, b = pcall(function()
+        workspace:FindFirstChild(name):FindFirstClass("Accessory"):Destroy()
+    end)
+    if not a then
+        warn("( ! ) CFG Accessory Deleting Error: " .. b)
+    end
+end
+if _G.changeSkinColor ~= nil then
+    local a, b = pcall(function()
+        local bc = workspace:FindFirstChild(name):FindFirstChild("Body Colors")
+        bc.HeadColor3 = _G.changeSkinColor
+        bc.LeftArmColor3 = _G.changeSkinColor
+        bc.LeftLegColor3 = _G.changeSkinColor
+        bc.RightArmColor3 = _G.changeSkinColor
+        bc.RightLegColor3 = _G.changeSkinColor
+        bc.TorsoColor3 = _G.changeSkinColor
+    end)
+    if not a then
+        warn("( ! ) CFG Skin Color Change Error: " .. b)
+    end
+end
+
+print('Done! Have fun ;)')
