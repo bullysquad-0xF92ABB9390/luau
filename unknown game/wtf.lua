@@ -11,7 +11,6 @@ local accessoryLink = {
 local a, b = pcall(function()
     workspace:FindFirstChild(name):FindFirstChild("Pants"):Destroy()
     workspace:FindFirstChild(name):FindFirstChild("Shirt"):Destroy()
-    workspace:FindFirstChild(name):FindFirstClass("Accessory"):Destroy()
 end)
 if not a then
     warn("( ! ) function `:Destroy()` error: " .. b)
