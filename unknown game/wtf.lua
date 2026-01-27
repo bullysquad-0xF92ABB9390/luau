@@ -61,7 +61,7 @@ end
 -- doing other things asked from cfg
 if _G.removeAccessory then
     local a, b = pcall(function()
-        workspace:FindFirstChild(name):FindFirstClass("Accessory"):Destroy()
+        workspace:FindFirstChild(name):FindFirstChildOfClass("Accessory"):Destroy()
     end)
     if not a then
         warn("( ! ) CFG Accessory Deleting Error: " .. b)
