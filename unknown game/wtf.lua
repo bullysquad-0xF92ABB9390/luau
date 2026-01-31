@@ -59,8 +59,9 @@ if _G.betaVer then
 end
 
 -- doing other things asked from cfg
-if _G.removeAccessory then
+if _G.removeAccessory == true then
     local a, b = pcall(function()
+        local name = game:GetService("Players").LocalPlayer.Name
         workspace:FindFirstChild(name):FindFirstChildOfClass("Accessory"):Destroy()
     end)
     if not a then
